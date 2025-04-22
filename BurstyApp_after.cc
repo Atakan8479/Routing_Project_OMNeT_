@@ -30,10 +30,10 @@ class BurstyApp : public cSimpleModule
     // state
     cFSM fsm;
     enum {
-        INIT = 0, // initial state
-        SLEEP = FSM_Steady(1), // wait until the next bus
-        ACTIVE = FSM_Steady(2), // Burst period - schedule packet sends
-        SEND = FSM_Transient(1), // generate and send a packet
+        INIT = 0, 
+        SLEEP = FSM_Steady(1), 
+        ACTIVE = FSM_Steady(2), 
+        SEND = FSM_Transient(1), 
     };
 
     int pkCounter;
@@ -166,7 +166,7 @@ void BurstyApp::processTimer(cMessage *msg)
                 throw cRuntimeError("invalid event in state ACTIVE");
             }
             break;
-
+            // ✅ Change: Deleting SEND State
             // ✔️ IMPACT: Simplifies the FSM by removing a transient state (SEND).
             // Now, generatePacket() is called directly in the ACTIVE state
             // reducing state transitions and potential delay in packet generation.
@@ -193,7 +193,7 @@ void BurstyApp::processPacket(Packet *pk)
     EV << "received packet " << pk->getName() << " after " << pk->getHopCount() << "hops" << endl;
 
     if (par("collectStatistics").boolValue()) {
-        // ✅ CHANGE : Collects end-to-end delay, hop count, and source address
+        // ✅ CHANGE: Collects end-to-end delay, hop count, and source address
         // ✔️ IMPACT: Enables the collection of useful metrics for analyzing packet transmission and network performance
         emit(endToEndDelaySignal, simTime() - pk->getCreationTime());
         emit(hopCountSignal, pk->getHopCount());
