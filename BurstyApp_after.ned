@@ -12,8 +12,8 @@ package node;
 //
 // Bursty message source.
 //
-simple BurstyApp like IApp // for wireless communication (signal) devices
-{ // for wireless sensor network
+simple BurstyApp like IApp 
+{ 
     parameters:
         bool collectStatistics = default(true); // ✅ CHANGE
         int address;  // local node address
