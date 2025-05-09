@@ -2,6 +2,20 @@
 
 This project explores and implements custom routing algorithms in OMNeT++, designed for both educational and performance testing purposes. It includes simulation scenarios, performance analyses, and improvements made to the routing mechanisms to enhance efficiency in packet delivery and more.
 
+## 🧠 What is OMNeT++?
+
+[OMNeT++](https://omnetpp.org) is a modular, component-based C++ simulation framework primarily used for building network simulators. It is widely used in academia and research for simulating wired and wireless communication networks, including internet protocols, vehicular networks, and 5G/6G systems.
+
+Key features of OMNeT++ include:
+
+- A graphical IDE based on Eclipse for modeling and running simulations.
+- NED language for defining network topologies.
+- Support for hierarchical models and reusable modules.
+- Strong visualization tools and result analysis features.
+- Extensible with popular frameworks like INET, Simu5G, and Veins.
+
+In this project, OMNeT++ is used to model and simulate custom routing protocols over multiple network topologies, enabling detailed performance evaluation and testing.
+
 ## 📌 Objective
 
 The aim of this project is to:
