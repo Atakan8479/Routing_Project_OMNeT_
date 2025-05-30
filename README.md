@@ -1,75 +1,93 @@
-# Routing Project in OMNeT++
+# 🚦 Routing Project in OMNeT++
 
-This project explores and implements custom routing algorithms in OMNeT++, designed for both educational and performance testing purposes. It includes simulation scenarios, performance analyses, and improvements made to the routing mechanisms to enhance efficiency in packet delivery and more.
+This project explores and implements enhanced routing mechanisms in OMNeT++ for both educational and performance-focused simulations. It introduces centralized routing, FSM simplifications, and performance tracking to improve packet delivery efficiency and provide deeper insights into network behavior.
+
+---
 
 ## 🧠 What is OMNeT++?
 
-[OMNeT++](https://omnetpp.org) is a modular, component-based C++ simulation framework primarily used for building network simulators. It is widely used in academia and research for simulating wired and wireless communication networks, including internet protocols, vehicular networks, and 5G/6G systems.
+[OMNeT++](https://omnetpp.org) is a modular, component-based C++ simulation environment widely used for academic research and network simulation. It supports:
 
-Key features of OMNeT++ include:
+- Graphical Eclipse-based IDE  
+- The NED language for defining network structures  
+- Hierarchical and reusable model design  
+- Real-time visualization and statistics tracking  
+- Extensions through INET, Simu5G, Veins, etc.
 
-- A graphical IDE based on Eclipse for modeling and running simulations.
-- NED language for defining network topologies.
-- Support for hierarchical models and reusable modules.
-- Strong visualization tools and result analysis features.
-- Extensible with popular frameworks like INET, Simu5G, and Veins.
+In this project, OMNeT++ was used to model custom routing protocols and evaluate them in various topologies using detailed performance metrics.
 
-In this project, OMNeT++ is used to model and simulate custom routing protocols over multiple network topologies, enabling detailed performance evaluation and testing.
+---
 
-## 📌 Objective
+## 🎯 Project Objective
 
-The aim of this project is to:
-- Develop and compare custom routing strategies.
-- Analyze their performance under different network scenarios.
-- Demonstrate how optimization techniques can improve throughput, reduce packet loss, and lower end-to-end delay in OMNeT++ simulations.
+- Develop and refine routing strategies  
+- Enable centralized routing logic with toggleable configuration  
+- Compare simulation performance across static topologies  
+- Reduce packet loss and delay while improving throughput  
+- Visualize and analyze collected metrics using Python tools
 
-## 🧠 Key Features
+---
 
-- ✅ Static routing using `cTopology`.
-- ✅ FSM-based routing logic enhancements.
-- ✅ Multiple test networks (e.g., Net5, Net60).
-- ✅ Conditional statistics tracking.
-- ✅ Performance comparisons and metrics output.
+## ⚙️ Key Features
 
-## 🧪 Network Scenarios
+- ✅ Centralized routing parameter toggle (`centralRouting`)
+- ✅ FSM-based application optimization (BurstyApp.cc)
+- ✅ Static routing via `cTopology`  
+- ✅ Dynamic metric collection (latency, hops, throughput)  
+- ✅ Lightweight message broadcasting & route serialization  
+- ✅ Scenario-based configuration for multi-topology support
 
-The simulations are tested under various network topologies to understand routing behavior under different conditions:
-- **Net5**: A small test topology for debugging and feature validation.
-- **Net60**: A complex scenario to evaluate scalability and performance under load.
+---
 
-## 📊 Performance Metrics
+## 🌐 Network Scenarios
 
-The project tracks and compares routing strategies using the following metrics:
-- Packet delivery ratio
-- End-to-end latency
-- Queue utilization
-- Throughput
-- Packet loss rate
+The project includes multiple test topologies for benchmarking:
 
-These metrics are analyzed and exported for visual and statistical evaluation.
+- **Net5**: Simple 5-node testbed for feature validation  
+- **Net60**: Large-scale, stress-test topology with cut-through and store-and-forward modes  
+- **RandomMesh / Mesh**: For variability and adaptive behavior evaluation
 
-## 🛠️ Technologies Used
+---
 
-- **OMNeT++** (Version 6.x recommended)
-- **INET Framework** (for network simulation modules)
-- **C++** (for core logic implementation)
-- **NED** (for network description files)
-- **Python/Matplotlib** (for post-simulation data analysis - optional)
+## 📊 Tracked Metrics
 
-## 🗂️ Project Structure
+The simulation tracks and compares:
+
+- 📦 Packet Delivery Ratio  
+- ⏱ End-to-End Delay  
+- 🧮 Queue Utilization  
+- 📈 Throughput  
+- ❌ Packet Loss  
+
+All metrics are exported and visualized via Python/Colab notebooks.
+
+---
+
+## 🛠 Technologies Used
+
+- **OMNeT++** (6.x recommended)  
+- **INET Framework**  
+- **C++ / NED** (for logic and topology files)  
+- **Python + Matplotlib** (for post-simulation analysis)  
+- **Google Colab** (optional result visualization)
+
+---
+
+## 🗂 Project Structure
 
 ```bash
 Routing_Project_OMNeT_/
 │
-├── src/                    # Source files (C++)
-│   ├── routing/            # Custom routing modules
-│   └── scenarios/          # Scenario-specific logic
+├── src/                    # Core C++ routing and app modules
+│   ├── routing/            # Centralized routing logic
+│   └── application/        # FSM-based traffic generation
 │
-├── ned/                    # Network description files
-│   ├── topologies/         # Net5, Net60 etc.
-│   └── config/             # Scenario-specific configurations
+├── ned/                    # Network description files (NED)
+│   ├── topologies/         # Net5, Net60, Mesh, etc.
+│   └── config/             # Parameters, modules
 │
-├── results/                # Simulation output
+├── results/                # Scalar/vector output from simulations
 │
-├── omnetpp.ini             # Main configuration file
-└── README.md               # Project description 
+├── analysis/               # Python notebooks and CSV evaluation
+├── omnetpp.ini             # Scenario & runtime configuration
+└── README.md               # Project overview
